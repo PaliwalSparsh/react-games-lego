@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-plugin-react-hooks": "^1.0.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-pose": "^4.0.6",
     "react-scripts": "2.1.3"
   },
   "scripts": {
