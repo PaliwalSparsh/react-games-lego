@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50px;
+    height: 100px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background: #ff9d1c;
+    transform-origin: 50% 50%;
+    margin: 20px;
+  }
+  
+  .head {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ff9d1c;
+    transform-origin: 50% 50%;
+  }
