@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import Worm from "./components/Worm.js";
-import posed from "react-pose";
 import "./styles.css";
 
 function Diglett() {
@@ -14,7 +13,7 @@ function Diglett() {
             updatedState.push(parseInt(Number(randomString[charIndex])/5));
         }
         setStates(updatedState)
-      }, 2000);
+      }, 100);
       return ()=>{
           clearInterval(generateStates);
       }

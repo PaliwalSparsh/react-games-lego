@@ -9,19 +9,15 @@ const states = {
 };
 
 function Worm(props) {
-  const [pose, setPose] = useState(0);
+  const [pose, setPose] = useState(props.pose);
   const Box = posed.div({
-    inside: { 
-        // height: "1vh", 
-        opacity: 0 },
-    outside: { 
-        // height: "14vh",
-         opacity: 1 },
-    destroy: { scale: 2 }
-  });
-
-  useEffect(() => {
-    setPose(props.pose)
+    inside: {
+      opacity: 0
+    },
+    outside: {
+      opacity: 1
+    },
+    destroy: { scale: 2, color: "black" }
   });
 
   return (
