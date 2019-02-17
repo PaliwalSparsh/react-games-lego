@@ -1,0 +1,17 @@
+.game-container {
+    width: 40vw;
+    height: 20vw;
+    border: 2px solid rgb(231, 231, 231);
+    margin: 5vh;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container__score {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}

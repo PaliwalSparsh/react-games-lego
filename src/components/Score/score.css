@@ -1,0 +1,16 @@
+.score-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  text-transform: uppercase;
+  margin: 1vh;
+  font-weight: bold;
+  color: grey;
+}
+
+.value {
+  margin: 1vh;
+  color: grey;
+}
