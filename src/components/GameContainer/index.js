@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GameData } from "../../contexts/GameData";
+import { GameDataProvider } from "../../contexts/GameData";
 import Score from "../Score";
 import "./gameContainer.css";
 
@@ -8,16 +8,18 @@ function Diglett(props) {
   const [currentScore, setCurrentScore] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const updateHighScore = (score) => {
-    setHighScore(score);
-  }
-
-  const updateCurrentScore = (score) => {
-    setCurrentScore(score);
-  }
-
-  const updateProgress = (value) => {
-    setProgress(value);
+  const dispatch = (action) => {
+    const { type, value } = action;
+    switch (type) {
+      case "UPDATE_HIGH_SCORE":
+        return setHighScore(value);
+      case "UPDATE_CURRENT_SCORE":
+        return setCurrentScore(value);
+      case "UPDATE_PROGRESS":
+        return setProgress(value);
+      default:
+        return null;
+    }
   }
 
   return (
@@ -25,19 +27,18 @@ function Diglett(props) {
       <div className="game-container__score">
         <Score title="High Score" value={highScore} />
         <Score title="Score" value={currentScore} />
+        <Score title="Progress" value={progress} />
       </div>
-      <GameData.Provider
+      <GameDataProvider
         value={{
           progress,
           highScore,
           currentScore,
-          updateHighScore,
-          updateCurrentScore,
-          updateProgress
+          dispatch
         }}
       >
         {props.children}
-      </GameData.Provider>
+      </GameDataProvider>
     </div>
   );
 }
