@@ -1,0 +1,7 @@
+.progress-bar {
+  height: 10px;
+  background-color: blue;
+  transition: width 0.1s;
+  transition-timing-function: ease-in-out;
+  transform-origin: 0% 0%;
+}
