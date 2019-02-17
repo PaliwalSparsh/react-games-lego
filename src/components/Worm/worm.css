@@ -1,0 +1,12 @@
+.worm-body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 5vh;
+  height: 10vh;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #ff9d1c;
+  transform-origin: top left;
+  margin: 20px;
+}
