@@ -1,39 +1,37 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { GameDataProvider } from "../../contexts/GameData";
 import Score from "../Score";
+import ProgressBar from "../ProgressBar";
 import "./gameContainer.css";
 
-function Diglett(props) {
-  const [highScore, setHighScore] = useState(0);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [progress, setProgress] = useState(0);
+const initialState = { highScore: 0, currentScore: 0, progress: 0 };
 
-  const dispatch = (action) => {
-    const { type, value } = action;
-    switch (type) {
-      case "UPDATE_HIGH_SCORE":
-        return setHighScore(value);
-      case "UPDATE_CURRENT_SCORE":
-        return setCurrentScore(value);
-      case "UPDATE_PROGRESS":
-        return setProgress(value);
-      default:
-        return null;
-    }
+function reducer(state, action) {
+  switch (action.type) {
+    case "UPDATE_HIGH_SCORE":
+      return Object.assign({}, state, action.payload);
+    case "UPDATE_CURRENT_SCORE":
+      return Object.assign({}, state, action.payload);
+    case "UPDATE_PROGRESS":
+      return Object.assign({}, state, action.payload);
+    default:
+      return null;
   }
+}
+
+function Diglett(props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div className="game-container">
       <div className="game-container__score">
-        <Score title="High Score" value={highScore} />
-        <Score title="Score" value={currentScore} />
-        <Score title="Progress" value={progress} />
+        <Score title="High Score" value={state.highScore} />
+        <Score title="Score" value={state.currentScore} />
       </div>
+      <ProgressBar progress={state.progress} />
       <GameDataProvider
         value={{
-          progress,
-          highScore,
-          currentScore,
+          state,
           dispatch
         }}
       >
