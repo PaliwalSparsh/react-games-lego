@@ -1,12 +1,36 @@
 .worm-body {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   width: 5vh;
   height: 10vh;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  background: #ff9d1c;
+  background: #252a34;
   transform-origin: top left;
   margin: 20px;
-}
+  }
+  
+  .worm-body__eyes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  }
+  
+  .worm-body__eye{
+  width: 1vh;
+  height: 1vh;
+  border-radius: 50%;
+  background: #ff2e63;
+  }
+  
+  .worm-body__tongue {
+  margin: 0 auto 0 auto;
+  width: 1vh;
+  height: 1vh;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  background: white;
+  }
