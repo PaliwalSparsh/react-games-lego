@@ -3,21 +3,16 @@ import GameContainer from "../../components/GameContainer";
 import WormContainer from "../../components/WormContainer";
 import "./diglett.css";
 
-let INTERVAL_TIME = 500;
+const INTERVAL_TIME = 500;
+const WORMS_SPAWNING_PER_TURN = 2;
+const WORM_SPAWNS_PER_GAME = 30;
 let oddInterval = true;
 
 function generateWormStates() {
-  let updatedState = [];
-  let wormCount = 0;
-  const randomString = String(parseInt(10000 * Math.random()));
-  for (let charIndex = 0; charIndex < randomString.length; charIndex++) {
-    const wormState = parseInt(Number(randomString[charIndex]) / 5);
-    updatedState.push(wormState);
-    if (wormState === 1) {
-      wormCount++;
-    }
-  }
-  return [updatedState, wormCount];
+  const allPossibleStates = [[0,0,1,1], [0,1,0,1], [1,0,0,1], [1,0,1,0], [1,1,0,0], [0,1,1,0]];
+  const randomState = allPossibleStates[Math.floor(Math.random()*allPossibleStates.length)];
+  const updatedState = [...randomState];
+  return updatedState;
 }
 
 function Diglett() {
@@ -33,14 +28,13 @@ function Diglett() {
   useEffect(() => {
     const generateStates = setInterval(() => {
       let updatedState;
-      let onesCount = 0;
       if (oddInterval) {
-        [updatedState, onesCount] = generateWormStates();
+        updatedState = generateWormStates();
       } else {
         updatedState = [0, 0, 0, 0];
       }
       oddInterval = !oddInterval;
-      setWormCount(wormCount + onesCount);
+      setWormCount(wormCount + WORMS_SPAWNING_PER_TURN);
       setWormStates(updatedState);
     }, INTERVAL_TIME);
     return () => {
@@ -53,6 +47,7 @@ function Diglett() {
       <WormContainer
         wormStates={wormStates}
         wormCount={wormCount}
+        wormSpawnsPerGame={WORM_SPAWNS_PER_GAME}
         updateWormState={updateWormState}
       />
     </GameContainer>

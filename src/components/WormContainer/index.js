@@ -4,13 +4,13 @@ import Worm from "../Worm";
 import "./wormContainer.css";
 
 export default function WormContainer(props) {
-  const { wormStates, updateWormState, wormCount } = props;
+  const { wormStates, updateWormState, wormCount, wormSpawnsPerGame } = props;
   const { dispatch, state } = useContext(GameData);
 
   useEffect(() => {
     dispatch({
       type: "UPDATE_PROGRESS",
-      payload: { progress: wormCount }
+      payload: { progress: (wormCount/wormSpawnsPerGame)*100 }
     });
   }, [wormCount]);
 
