@@ -1,7 +1,5 @@
 .wormContainer {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    background-color: aqua;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
