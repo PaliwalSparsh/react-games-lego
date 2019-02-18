@@ -1,16 +1,25 @@
 .game-container {
-    width: 40vw;
-    border: 2px solid rgb(231, 231, 231);
-    margin: 5vh;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
+  width: fit-content;
+  border: 2px solid rgb(231, 231, 231);
+  margin: 5vh;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .game-container__score {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.play-button {
+  margin: auto;
+  padding: 5vh;
+}
+
+.play-button:hover {
+  transform: scaleX(1.5) scaleY(1.5);
 }

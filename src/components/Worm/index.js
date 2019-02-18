@@ -41,7 +41,13 @@ function Worm(props) {
         updateWormState(index, 2);
       }}
       pose={poses[wormState]}
-    />
+    >
+      <div className="worm-body__eyes">
+        <div className="worm-body__eye" />
+        <div className="worm-body__eye" />
+      </div>
+      <div className="worm-body__tongue" />
+    </WormBody>
   );
 }
 
