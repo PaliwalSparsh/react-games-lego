@@ -27,22 +27,27 @@ function reducer(state, action) {
   }
 }
 
-function PlayButton(props) {
+function StartMenu(props) {
   return (
-    <div className="play-button" onClick={props.onClick}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <path d="M8 5v14l11-7z" />
-        <path d="M0 0h24v24H0z" fill="none" />
-      </svg>
+    <div className="start-menu">
+      <div className="start-menu__display-name" onClick={props.onClick}>
+        {props.displayName}
+      </div>
+      <div className="start-menu__play-button" onClick={props.onClick}>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M8 5v14l11-7z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </div>
     </div>
   );
 }
 
-function Diglett(props) {
+function GameContainer(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const showStartMenu = state.progress === PROGRESS_VALUE_FOR_START_MENU;
 
@@ -73,16 +78,18 @@ function Diglett(props) {
         <Score title="Score" value={state.currentScore} />
       </div>
       <ProgressBar progress={state.progress} />
-      <GameDataProvider
-        value={{
-          state,
-          dispatch
-        }}
-      >
-        {showStartMenu ? <PlayButton onClick={startGame} /> : props.children}
-      </GameDataProvider>
+      <div className="game-container__playground">
+        <GameDataProvider
+          value={{
+            state,
+            dispatch
+          }}
+        >
+          {showStartMenu ? <StartMenu onClick={startGame} displayName={props.displayName} /> : props.children}
+        </GameDataProvider>
+      </div>
     </div>
   );
 }
 
-export default Diglett;
+export default GameContainer;

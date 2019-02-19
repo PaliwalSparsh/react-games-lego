@@ -34,12 +34,14 @@ const WormBody = posed.div({
 
 function Worm(props) {
   const { index, wormState, updateWormState } = props;
+  function killWorm() {
+    updateWormState(index, 2);
+  }
   return (
     <WormBody
       className="worm-body"
-      onClick={() => {
-        updateWormState(index, 2);
-      }}
+      onClick={killWorm}
+      onTouch={killWorm}
       pose={poses[wormState]}
     >
       <div className="worm-body__eyes">

@@ -3,10 +3,11 @@ import GameContainer from "../../components/GameContainer";
 import WormContainer from "../../components/WormContainer";
 import "./diglett.css";
 
-function Diglett() {
+function Diglett(props) {
+  const { intervalTime, wormSpawnsPerGame } = props;
   return (
-    <GameContainer>
-      <WormContainer/>
+    <GameContainer displayName="Diglett">
+      <WormContainer intervalTime={intervalTime} wormSpawnsPerGame={wormSpawnsPerGame} />
     </GameContainer>
   );
 }

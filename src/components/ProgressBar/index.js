@@ -4,11 +4,19 @@ import "./progressBar.css";
 
 function ProgressBar(props) {
   const { progress } = props;
-  const style = {
+  const completedBarStyle = {
     width: `${progress}%`
   };
-  
-  return <div className="progress-bar" style={style} progress={progress} pose="default" />;
+  const remainingBarStyle = {
+    width: `${100 - progress}%`
+  };
+
+  return (
+    <div className="progress-bar">
+      <div className="progress-bar__completed" style={completedBarStyle} />
+      <div className="progress-bar__remaining" style={remainingBarStyle} />
+    </div>
+  );
 }
 
 export default ProgressBar;
