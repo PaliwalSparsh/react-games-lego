@@ -3,10 +3,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 5vh;
-  height: 10vh;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  width: 48px;
+  height: 92px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
   background: #252a34;
   transform-origin: top left;
   margin: 20px;
@@ -20,16 +20,16 @@
   }
   
   .worm-body__eye{
-  width: 1vh;
-  height: 1vh;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #ff2e63;
   }
   
   .worm-body__tongue {
   margin: 0 auto 0 auto;
-  width: 1vh;
-  height: 1vh;
+  width: 10px;
+  height: 10px;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   background: white;

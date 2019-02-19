@@ -5,12 +5,12 @@
 
 .title {
   text-transform: uppercase;
-  margin: 1vh;
+  margin: 5px;
   font-weight: bold;
   color: grey;
 }
 
 .value {
-  margin: 1vh;
+  margin: 5px;
   color: grey;
 }

@@ -3,22 +3,21 @@ import { GameData } from "../../contexts/GameData";
 import Worm from "../Worm";
 import "./wormContainer.css";
 
-const INTERVAL_TIME = 1000;
 const WORMS_SPAWNING_PER_TURN = 2;
-const WORM_SPAWNS_PER_GAME = 30;
 let oddInterval = true;
 
 function generateWormStates() {
-  const allPossibleStates = [[0,0,1,1], [0,1,0,1], [1,0,0,1], [1,0,1,0], [1,1,0,0], [0,1,1,0]];
-  const randomState = allPossibleStates[Math.floor(Math.random()*allPossibleStates.length)];
+  const allPossibleStates = [[0, 0, 1, 1], [0, 1, 0, 1], [1, 0, 0, 1], [1, 0, 1, 0], [1, 1, 0, 0], [0, 1, 1, 0]];
+  const randomState = allPossibleStates[Math.floor(Math.random() * allPossibleStates.length)];
   const updatedState = [...randomState];
   return updatedState;
 }
 
-export default function WormContainer() {
+export default function WormContainer(props) {
   const [wormStates, setWormStates] = useState([0, 1, 1, 1]);
   const [wormCount, setWormCount] = useState(0);
   const { dispatch, state } = useContext(GameData);
+  const { intervalTime, wormSpawnsPerGame } = props
 
   useEffect(() => {
     const generateStates = setInterval(() => {
@@ -33,7 +32,7 @@ export default function WormContainer() {
       }
       oddInterval = !oddInterval;
       setWormStates(updatedState);
-    }, INTERVAL_TIME);
+    }, intervalTime);
     return () => {
       clearInterval(generateStates);
     };
@@ -42,7 +41,7 @@ export default function WormContainer() {
   function updateProgress() {
     dispatch({
       type: "UPDATE_PROGRESS",
-      payload: { progress: (wormCount/WORM_SPAWNS_PER_GAME)*100 }
+      payload: { progress: (wormCount / wormSpawnsPerGame) * 100 }
     });
   }
 
@@ -63,7 +62,7 @@ export default function WormContainer() {
   }
 
   return (
-    <div className="wormContainer">
+    <div className="worm-container">
       {wormStates.map((wormState, index) => (
         <Worm
           wormState={wormState}
