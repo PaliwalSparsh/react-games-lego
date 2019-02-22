@@ -1,8 +1,8 @@
-import React, { useReducer, useEffect } from "react";
-import { GameDataProvider } from "../../contexts/GameData";
-import Score from "../Score";
-import ProgressBar from "../ProgressBar";
-import "./gameContainer.css";
+import React, { useReducer, useEffect } from 'react';
+import { GameDataProvider } from '../../contexts/GameData';
+import Score from '../Score';
+import ProgressBar from '../ProgressBar';
+import './gameContainer.css';
 
 const PROGRESS_VALUE_FOR_START_MENU = -1;
 
@@ -14,13 +14,13 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "UPDATE_HIGH_SCORE":
+    case 'UPDATE_HIGH_SCORE':
       return Object.assign({}, state, action.payload);
-    case "UPDATE_CURRENT_SCORE":
+    case 'UPDATE_CURRENT_SCORE':
       return Object.assign({}, state, action.payload);
-    case "UPDATE_PROGRESS":
+    case 'UPDATE_PROGRESS':
       return Object.assign({}, state, action.payload);
-    case "UPDATE_ALL_VALUES":
+    case 'UPDATE_ALL_VALUES':
       return Object.assign({}, state, action.payload);
     default:
       return null;
@@ -34,11 +34,7 @@ function StartMenu(props) {
         {props.displayName}
       </div>
       <div className="start-menu__play-button" onClick={props.onClick}>
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
+        <svg width="35" height="35" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z" />
           <path d="M0 0h24v24H0z" fill="none" />
         </svg>
@@ -55,7 +51,7 @@ function GameContainer(props) {
     if (state.progress === 100) {
       const isHighScore = state.currentScore > state.highScore;
       dispatch({
-        type: "UPDATE_ALL_VALUES",
+        type: 'UPDATE_ALL_VALUES',
         payload: Object.assign(
           { progress: PROGRESS_VALUE_FOR_START_MENU, currentScore: 0 },
           isHighScore ? { highScore: state.currentScore } : {}
@@ -66,7 +62,7 @@ function GameContainer(props) {
 
   function startGame() {
     dispatch({
-      type: "UPDATE_PROGRESS",
+      type: 'UPDATE_PROGRESS',
       payload: Object.assign({ progress: 0 })
     });
   }
@@ -85,7 +81,11 @@ function GameContainer(props) {
             dispatch
           }}
         >
-          {showStartMenu ? <StartMenu onClick={startGame} displayName={props.displayName} /> : props.children}
+          {showStartMenu ? (
+            <StartMenu onClick={startGame} displayName={props.displayName} />
+          ) : (
+            props.children
+          )}
         </GameDataProvider>
       </div>
     </div>
