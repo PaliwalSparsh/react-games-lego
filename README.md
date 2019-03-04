@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/PaliwalSparsh/react-games-component.svg?branch=master)](https://travis-ci.org/PaliwalSparsh/react-games-component)
+[![Storybook](https://github.com/storybooks/brand/blob/master/badge/badge-storybook.svg)](https://react-games-component.netlify.com)
 
 ## Get Started
 
