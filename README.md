@@ -1,4 +1,4 @@
-![alt text](https://github.com/PaliwalSparsh/react-games-component/blob/feature/hooksAttempt/public/react-games.png)
+[![Build Status](https://travis-ci.org/PaliwalSparsh/react-games-component.svg?branch=master)](https://travis-ci.org/PaliwalSparsh/react-games-component)
 
 ## Get Started
 
