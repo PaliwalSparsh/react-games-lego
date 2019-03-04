@@ -1,62 +1,44 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { withKnobs, text, number, color } from '@storybook/addon-knobs';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { text, number, color, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import ProgressBar from '../components/ProgressBar';
 import Score from '../components/Score';
 import Worm from '../components/Worm';
 
+addDecorator(withKnobs);
+
 //---------------------------------------------------------------------------//
 
 const storiesOfProgressBar = storiesOf('ProgressBar', module);
-storiesOfProgressBar.addDecorator(withKnobs);
 storiesOfProgressBar.add('default', () => {
-	const label = 'Progress';
-	const defaultValue = 30;
 	const options = {
 		range: true,
 		min: 0,
 		max: 100,
 		step: 1,
 	};
-	const progress = number(label, defaultValue, options);
-
-	const colorLabel = 'Color';
-	const defaultColorValue = 'black';
-	const colorValue = color(colorLabel, defaultColorValue);
-
+	const progress = number('Progress', 30, options);
+	const colorValue = color('Color', 'black');
 	return <ProgressBar progress={progress} color={colorValue} />;
 });
 
 //---------------------------------------------------------------------------//
 
 const storiesOfScore = storiesOf('Score', module);
-storiesOfScore.addDecorator(withKnobs);
 storiesOfScore.add('default', () => {
-	const textLabel = 'Text';
-	const textDefaultValue = 'High Score';
-	const textValue = text(textLabel, textDefaultValue);
-
-	const valueLabel = 'Value';
-	const defaultValue = 9;
-	const value = number(valueLabel, defaultValue);
-
-	return <Score text={textValue} value={value} />;
+	const title = text('Title', 'High Score');
+	const value = number('Value', 9);
+	return <Score title={title} value={value} />;
 });
 
 //---------------------------------------------------------------------------//
 
 const storiesOfWorm = storiesOf('Worm', module);
-storiesOfWorm.addDecorator(withKnobs);
 storiesOfWorm.add('default', () => {
-	const textLabel = 'Text';
-	const textDefaultValue = 'High Score';
-	const textValue = text(textLabel, textDefaultValue);
-
-	const valueLabel = 'Value';
-	const defaultValue = 9;
-	const value = number(valueLabel, defaultValue);
-
-	return <Score text={textValue} value={value} />;
+	const states = { 0: 0, 1: 1, 2: 2 };
+	return <Worm state={select('state', states, 1)} onClick={action('click')} />;
 });
