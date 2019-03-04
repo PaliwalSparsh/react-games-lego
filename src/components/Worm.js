@@ -1,6 +1,6 @@
 import React from "react";
 import posed from "react-pose";
-import "./worm.css";
+import "./styles/Worm.style.css";
 
 const poses = {
   0: "inside",

@@ -1,5 +1,5 @@
 import React from "react";
-import "./score.css";
+import "./styles/Score.style.css";
 
 function Score(props) {
   return (

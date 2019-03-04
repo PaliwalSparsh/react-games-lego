@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect } from 'react';
-import { GameDataProvider } from '../../contexts/GameData';
-import Score from '../Score';
-import ProgressBar from '../ProgressBar';
-import './gameContainer.css';
+import { GameDataProvider } from '../contexts/GameData';
+import Score from './Score';
+import ProgressBar from './ProgressBar';
+import './styles/GameContainer.style.css';
 
 const PROGRESS_VALUE_FOR_START_MENU = -1;
 
