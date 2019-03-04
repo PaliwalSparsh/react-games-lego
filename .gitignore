@@ -12,6 +12,9 @@
 /build
 /storybook-static
 
+# lock
+yarn.lock
+
 # misc
 .DS_Store
 .env.local
