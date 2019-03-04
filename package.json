@@ -24,12 +24,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^1.0.1",
-    "@storybook/react": "^4.1.13",
+    "@storybook/addon-a11y": "^4.1.13",
     "@storybook/addon-actions": "^4.1.13",
-    "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-knobs": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addon-options": "^4.1.13",
     "@storybook/addon-storyshots": "^4.1.13",
+    "@storybook/addon-viewport": "^4.1.13",
+    "@storybook/react": "^4.1.13",
+    "eslint-plugin-react-hooks": "^1.0.1",
     "react-test-renderer": "^16.8.3"
   }
 }
