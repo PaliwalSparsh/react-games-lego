@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GameData } from "../../contexts/GameData";
-import Worm from "../Worm";
-import "./wormContainer.css";
+import { GameData } from "../contexts/GameData";
+import Worm from "./Worm";
+import "./styles/WormContainer.style.css";
 
 const WORMS_SPAWNING_PER_TURN = 2;
 let oddInterval = true;

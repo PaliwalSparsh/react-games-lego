@@ -1,0 +1,56 @@
+.game-container {
+	min-width: 280px;
+	height: 180px;
+	border: 2px solid rgb(231, 231, 231);
+	margin: 20px;
+	border-radius: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.game-container__score {
+	display: flex;
+	justify-content: flex-start;
+	height: 30px;
+	width: 100%;
+}
+
+.game-container__playground {
+	height: calc(100% - 35px);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.start-menu {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.start-menu__play-button {
+	opacity: 0.5;
+	width: 100%;
+	height: 40%;
+	display: flex;
+	justify-content: center;
+}
+
+.start-menu__play-button:hover {
+	opacity: 1;
+}
+
+.start-menu__display-name {
+	width: 100%;
+	height: 60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	font-weight: 800;
+}
