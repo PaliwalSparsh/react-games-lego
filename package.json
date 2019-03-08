@@ -11,18 +11,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "commit": "git-cz",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.0.0",
     "@storybook/addon-actions": "^5.0.0",
@@ -32,6 +31,8 @@
     "@storybook/addon-storyshots": "^5.0.0",
     "@storybook/addon-viewport": "^5.0.0",
     "@storybook/react": "^5.0.0",
+    "commitizen": "^3.0.7",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint-plugin-react-hooks": "^1.0.1",
     "react-test-renderer": "^16.8.3"
   }
