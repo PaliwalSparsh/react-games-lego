@@ -1,4 +1,4 @@
-.game-container {
+.diglett-container {
 	min-width: 280px;
 	height: 180px;
 	border: 2px solid rgb(231, 231, 231);
@@ -10,14 +10,14 @@
 	align-items: center;
 }
 
-.game-container__score {
+.diglett-container__score {
 	display: flex;
 	justify-content: flex-start;
 	height: 30px;
 	width: 100%;
 }
 
-.game-container__playground {
+.diglett-container__playground {
 	height: calc(100% - 35px);
 	width: 100%;
 	display: flex;
