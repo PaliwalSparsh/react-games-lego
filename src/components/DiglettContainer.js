@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import { GameDataProvider } from '../contexts/GameData';
 import Score from './Score';
 import ProgressBar from './ProgressBar';
-import './styles/GameContainer.style.css';
+import './styles/DiglettContainer.style.css';
 
 const PROGRESS_VALUE_FOR_START_MENU = -1;
 
@@ -43,7 +43,7 @@ function StartMenu(props) {
   );
 }
 
-function GameContainer(props) {
+function DiglettContainer(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const showStartMenu = state.progress === PROGRESS_VALUE_FOR_START_MENU;
 
@@ -68,13 +68,13 @@ function GameContainer(props) {
   }
 
   return (
-    <div className="game-container">
-      <div className="game-container__score">
+    <div className="diglett-container">
+      <div className="diglett-container__score">
         <Score title="High Score" value={state.highScore} />
         <Score title="Score" value={state.currentScore} />
       </div>
       <ProgressBar progress={state.progress} />
-      <div className="game-container__playground">
+      <div className="diglett-container__playground">
         <GameDataProvider
           value={{
             state,
@@ -92,4 +92,4 @@ function GameContainer(props) {
   );
 }
 
-export default GameContainer;
+export default DiglettContainer;
