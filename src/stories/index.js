@@ -8,6 +8,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import ProgressBar from '../components/ProgressBar';
 import Score from '../components/Score';
 import Worm from '../components/Worm';
+import StartMenu from '../components/StartMenu';
 
 addDecorator(withKnobs);
 
@@ -41,4 +42,21 @@ const storiesOfWorm = storiesOf('Worm', module);
 storiesOfWorm.add('default', () => {
 	const states = { 0: 0, 1: 1, 2: 2 };
 	return <Worm state={select('state', states, 1)} onClick={action('click')} />;
+});
+
+//---------------------------------------------------------------------------//
+
+const storiesOfStartMenu = storiesOf('StartMenu', module);
+storiesOfStartMenu.add('default', () => {
+	return (
+		<div style={{ height: 440 }}>
+			<StartMenu
+				title={text('Title', 'The Game of Life')}
+				onClickStart={action('start click')}
+				noteForSmallScreens={text('Note for small screens', 'Do this on a small screen.')}
+			>
+				Thats all folks
+			</StartMenu>
+		</div>
+	);
 });
