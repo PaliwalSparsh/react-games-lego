@@ -9,6 +9,7 @@ import ProgressBar from '../components/ProgressBar';
 import Score from '../components/Score';
 import Worm from '../components/Worm';
 import StartMenu from '../components/StartMenu';
+import GameContainer from '../components/GameContainer';
 
 addDecorator(withKnobs);
 
@@ -47,16 +48,41 @@ storiesOfWorm.add('default', () => {
 //---------------------------------------------------------------------------//
 
 const storiesOfStartMenu = storiesOf('StartMenu', module);
-storiesOfStartMenu.add('default', () => {
+const StartMenuComponent = () => (
+	<StartMenu
+		title={text('Title', 'The Game of Life')}
+		onClickStart={action('start click')}
+		noteForSmallScreens={text('Note for small screens', 'Do this on a small screen.')}
+	>
+		Thats all folks
+	</StartMenu>
+);
+
+storiesOfStartMenu.add('with game container', () => {
+	return (
+		<GameContainer note="Let's see how this looks inside game container.">
+			<StartMenuComponent />
+		</GameContainer>
+	);
+});
+
+storiesOfStartMenu.add('without game container', () => {
 	return (
 		<div style={{ height: 440 }}>
-			<StartMenu
-				title={text('Title', 'The Game of Life')}
-				onClickStart={action('start click')}
-				noteForSmallScreens={text('Note for small screens', 'Do this on a small screen.')}
-			>
-				Thats all folks
-			</StartMenu>
+			<StartMenuComponent />
 		</div>
 	);
 });
+
+//---------------------------------------------------------------------------//
+
+const storiesOfGameContainer = storiesOf('GameContainer', module);
+storiesOfGameContainer.add('default', () => {
+	return (
+		<GameContainer note={text('Note', 'Play this game at your own risk.')}>
+			Place Game in here.
+		</GameContainer>
+	);
+});
+
+//---------------------------------------------------------------------------//

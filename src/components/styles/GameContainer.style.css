@@ -1,0 +1,31 @@
+.game-container {
+	min-width: 280px;
+	height: 500px;
+	border: 2px solid rgb(231, 231, 231);
+	margin: 20px;
+	border-radius: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.game-container__body {
+	height: calc(100% - 30px);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.game-container__footer {
+	height: 30px;
+	width: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
+	font-size: 12px;
+	border-top: 2px solid rgb(231, 231, 231);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
