@@ -9,6 +9,7 @@ import ProgressBar from '../components/ProgressBar';
 import Score from '../components/Score';
 import Worm from '../components/Worm';
 import StartMenu from '../components/StartMenu';
+import PauseMenu from '../components/PauseMenu';
 import GameOver from '../components/GameOver';
 import GameContainer from '../components/GameContainer';
 
@@ -53,6 +54,22 @@ storiesOfWorm.add('default', () => {
 
 //---------------------------------------------------------------------------//
 
+const DemoChildrenForScreens = ({ children }) => (
+	<div
+		style={{
+			fontSize: 20,
+			textAlign: 'center',
+			fontWeight: 800,
+			fontFamily: 'Arial',
+			color: '#f2929e',
+		}}
+	>
+		{children}
+	</div>
+);
+
+//---------------------------------------------------------------------------//
+
 const storiesOfGameContainer = storiesOf(`${SCREENS}GameContainer`, module);
 storiesOfGameContainer.add('default', () => {
 	return (
@@ -71,17 +88,9 @@ const StartMenuComponent = () => (
 		onClickStart={action('start click')}
 		noteForSmallScreens={text('Note for small screens', 'Do this on a small screen.')}
 	>
-		<div
-			style={{
-				fontSize: 20,
-				textAlign: 'center',
-				fontWeight: 800,
-				fontFamily: 'Arial',
-				color: '#f2929e',
-			}}
-		>
+		<DemoChildrenForScreens>
 			I would place all required game inputs, rules and other things as children of this component.
-		</div>
+		</DemoChildrenForScreens>
 	</StartMenu>
 );
 
@@ -130,3 +139,28 @@ storiesOfGameOver.add('without game container', () => {
 });
 
 //---------------------------------------------------------------------------//
+
+const storiesOfPauseMenu = storiesOf(`${SCREENS}PauseMenu`, module);
+const PauseMenuComponent = () => (
+	<PauseMenu onClickResume={action('Resume button click')}>
+		<DemoChildrenForScreens>
+			I would place all buttons for settings or redirecting to home etc here.
+		</DemoChildrenForScreens>
+	</PauseMenu>
+);
+
+storiesOfPauseMenu.add('with game container', () => {
+	return (
+		<GameContainer note="Let's see how this looks inside game container.">
+			<PauseMenuComponent />
+		</GameContainer>
+	);
+});
+
+storiesOfPauseMenu.add('without game container', () => {
+	return (
+		<div style={{ height: 440 }}>
+			<PauseMenuComponent />
+		</div>
+	);
+});
