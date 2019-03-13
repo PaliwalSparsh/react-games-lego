@@ -9,13 +9,19 @@ import ProgressBar from '../components/ProgressBar';
 import Score from '../components/Score';
 import Worm from '../components/Worm';
 import StartMenu from '../components/StartMenu';
+import GameOver from '../components/GameOver';
 import GameContainer from '../components/GameContainer';
 
 addDecorator(withKnobs);
 
+const UI = 'UI|';
+const CHARACTERS = 'CHARACTERS|';
+const DEMO = 'DEMO|';
+const SCREENS = 'SCREENS|';
+
 //---------------------------------------------------------------------------//
 
-const storiesOfProgressBar = storiesOf('ProgressBar', module);
+const storiesOfProgressBar = storiesOf(`${UI}ProgressBar`, module);
 storiesOfProgressBar.add('default', () => {
 	const options = {
 		range: true,
@@ -30,7 +36,7 @@ storiesOfProgressBar.add('default', () => {
 
 //---------------------------------------------------------------------------//
 
-const storiesOfScore = storiesOf('Score', module);
+const storiesOfScore = storiesOf(`${UI}Score`, module);
 storiesOfScore.add('default', () => {
 	const title = text('Title', 'High Score');
 	const value = number('Value', 9);
@@ -39,7 +45,7 @@ storiesOfScore.add('default', () => {
 
 //---------------------------------------------------------------------------//
 
-const storiesOfWorm = storiesOf('Worm', module);
+const storiesOfWorm = storiesOf(`${CHARACTERS}Worm`, module);
 storiesOfWorm.add('default', () => {
 	const states = { 0: 0, 1: 1, 2: 2 };
 	return <Worm state={select('state', states, 1)} onClick={action('click')} />;
@@ -47,14 +53,35 @@ storiesOfWorm.add('default', () => {
 
 //---------------------------------------------------------------------------//
 
-const storiesOfStartMenu = storiesOf('StartMenu', module);
+const storiesOfGameContainer = storiesOf(`${SCREENS}GameContainer`, module);
+storiesOfGameContainer.add('default', () => {
+	return (
+		<GameContainer note={text('Note', 'Play this game at your own risk.')}>
+			Place Game in here.
+		</GameContainer>
+	);
+});
+
+//---------------------------------------------------------------------------//
+
+const storiesOfStartMenu = storiesOf(`${SCREENS}StartMenu`, module);
 const StartMenuComponent = () => (
 	<StartMenu
 		title={text('Title', 'The Game of Life')}
 		onClickStart={action('start click')}
 		noteForSmallScreens={text('Note for small screens', 'Do this on a small screen.')}
 	>
-		Thats all folks
+		<div
+			style={{
+				fontSize: 20,
+				textAlign: 'center',
+				fontWeight: 800,
+				fontFamily: 'Arial',
+				color: '#f2929e',
+			}}
+		>
+			I would place all required game inputs, rules and other things as children of this component.
+		</div>
 	</StartMenu>
 );
 
@@ -76,12 +103,29 @@ storiesOfStartMenu.add('without game container', () => {
 
 //---------------------------------------------------------------------------//
 
-const storiesOfGameContainer = storiesOf('GameContainer', module);
-storiesOfGameContainer.add('default', () => {
+const storiesOfGameOver = storiesOf(`${SCREENS}GameOver`, module);
+const GameOverComponent = () => (
+	<GameOver
+		onClickMainMenu={action('Main menu button click')}
+		firstLine={text('First Line Text', 'Rakesh WON!!!')}
+		secondLine={text('Second Line Text', '🎉 HIGHSCORE 🎉')}
+		thirdLine={text('Third Line Text', 'SCORE: 80')}
+	/>
+);
+
+storiesOfGameOver.add('with game container', () => {
 	return (
-		<GameContainer note={text('Note', 'Play this game at your own risk.')}>
-			Place Game in here.
+		<GameContainer note="Let's see how this looks inside game container.">
+			<GameOverComponent />
 		</GameContainer>
+	);
+});
+
+storiesOfGameOver.add('without game container', () => {
+	return (
+		<div style={{ height: 440 }}>
+			<GameOverComponent />
+		</div>
 	);
 });
 

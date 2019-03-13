@@ -10,6 +10,8 @@ addParameters({
 		}),
 		isFullscreen: false,
 		panelPosition: 'right',
+		hierarchySeparator: /\./,
+		hierarchyRootSeparator: /\|/,
 	},
 });
 addParameters({ viewport: {} });
