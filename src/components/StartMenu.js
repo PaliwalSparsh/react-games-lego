@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import defaultIcon from '../../public/react-games.png';
 import './styles/StartMenu.style.css';
 import '../global.css';
 
@@ -23,7 +22,7 @@ function StartMenu(props) {
 	return (
 		<div className="start-menu">
 			<div className="start-menu__header">
-				<img className="start-menu__game-logo" src={icon || defaultIcon} alt="logo" />
+				{icon && <img className="start-menu__game-logo" src={icon} alt="logo" />}
 				<div>{title}</div>
 			</div>
 			<div className="start-menu__body">{children}</div>
