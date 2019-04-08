@@ -1,0 +1,14 @@
+.diglett-container__score {
+	display: flex;
+	justify-content: flex-start;
+	height: 30px;
+	width: 100%;
+}
+
+.diglett-container__playground {
+	height: calc(100% - 35px);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
