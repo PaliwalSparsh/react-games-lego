@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { GameData } from '../contexts/GameData';
-import Worm from './Worm';
+import { GameData } from './contexts/GameData';
+import Worm from '../components/Worm';
 import './styles/WormContainer.style.css';
 
 const WORMS_SPAWNING_PER_TURN = 2;
 const WORM_DESTROY_STATE = 2;
-let oddInterval = true;
+let oddInterval = false;
 
 function generateWormStates() {
 	const allPossibleStates = [
@@ -34,16 +34,14 @@ export default function WormContainer(props) {
 				updatedState = generateWormStates();
 				const updatedWormCount = wormCount + WORMS_SPAWNING_PER_TURN;
 				setWormCount(updatedWormCount);
-				updateProgress(updatedWormCount);
+				updateProgress();
 			} else {
 				updatedState = [0, 0, 0, 0];
 			}
 			oddInterval = !oddInterval;
 			setWormStates(updatedState);
 		}, intervalTime);
-		return () => {
-			clearInterval(generateStates);
-		};
+		return () => clearInterval(generateStates);
 	});
 
 	function updateProgress() {
@@ -72,12 +70,7 @@ export default function WormContainer(props) {
 	return (
 		<div className="worm-container">
 			{wormStates.map((wormState, index) => (
-				<Worm
-					state={wormState}
-					onClick={killWorm(index)}
-					index={index}
-					key={index}
-				/>
+				<Worm state={wormState} onClick={() => killWorm(index)} key={index} />
 			))}
 		</div>
 	);
